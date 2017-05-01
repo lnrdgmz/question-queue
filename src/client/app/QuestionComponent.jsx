@@ -7,8 +7,12 @@ const QuestionComponent = (props) => {
       <div>{question.questionText}</div>
       <div>Votes: {question.votes}</div>
       <div>Asked on {Date(question.createdAt)}</div>
-      <button onClick={() => props.handleUpvote(question)}>Vote</button>
-      <button onClick={() => props.handleAnswered(question)}>Clear</button>
+      {question.answered ||
+        <div>
+          <button onClick={() => props.handleUpvote(question)}>Vote</button>
+          <button onClick={() => props.handleAnswered(question)}>Clear</button>
+        </div>
+      }
     </div>
   );
 };
